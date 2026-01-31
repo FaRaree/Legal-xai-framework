@@ -191,3 +191,13 @@ This work therefore contributes to a broader vision of explainable AI as a commu
 
 ### 7.5 Future Work
 Future research will extend this framework to additional datasets and incorporate more flexible natural language generation techniques. Controlled studies with legal professionals will be necessary to evaluate whether narrative explanations genuinely improve trust and understanding in judicial settings. Further work may also integrate fairness auditing directly into the narrative layer to expose potential proxy variables and disparate impacts.
+
+## 8. Conclusion
+
+This study examined whether SHAP-based explainable AI outputs can be transformed into narrative justifications suitable for judicial reasoning. While existing explainability methods provide mathematically grounded feature attributions, they do not directly satisfy legal requirements for intelligibility and contestability. Courts require reasons that can be articulated, scrutinized, and challenged within adversarial proceedings, rather than abstract numerical contributions.
+
+By introducing a rule-based narrative translation layer, this work reframes explanation as a legal artifact rather than a purely technical one. The proposed framework preserves the fidelity of SHAP attributions while expressing them in structured language that resembles judicial justification. The results demonstrate that such narratives can retain consistency with underlying model behavior while improving interpretability for non-technical audiences.
+
+The primary contribution of this work is the formalization of the “narrative gap” between statistical explanation and legal justification, along with a reproducible pipeline for addressing it. This approach offers a path toward more transparent and auditable algorithmic decision-support systems in the criminal justice domain.
+
+Future research should evaluate this framework with practicing legal professionals, extend it to additional datasets and decision contexts, and explore adaptive narrative generation methods. More broadly, this work suggests that meaningful explainability in law requires not only faithful attribution, but also communication aligned with legal norms of reasoning and evidence.
