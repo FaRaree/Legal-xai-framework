@@ -74,3 +74,27 @@ Run locally:
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
+---
+
+## 🔍 Model Explainability (SHAP)
+
+### Global Feature Importance
+This plot shows which features most influence recidivism predictions.
+
+![Global Feature Importance](docs/global_feature_importance.png)
+
+---
+
+### Local Explanation (Individual Prediction)
+This plot explains why a specific individual was predicted high or low risk.
+
+![Local Explanation](docs/local_explanation_example.png)
+
+---
+
+## 📊 Model Performance
+- AUC: ~0.74  
+- Accuracy: ~0.69  
+- Dataset: COMPAS (ProPublica)
+
+This system demonstrates how explainable AI can be applied to legal risk assessment models under Daubert-style standards.
