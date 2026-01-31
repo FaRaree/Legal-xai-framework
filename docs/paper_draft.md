@@ -15,3 +15,38 @@ Using a recidivism risk assessment dataset (COMPAS) as a case study, we train a 
 The contributions of this work are threefold: (1) a reproducible pipeline combining predictive modeling, SHAP explanations, and narrative translation; (2) a formalized set of narrative translation rules grounded in legal intelligibility; and (3) an experimental protocol for evaluating whether such narratives better support legal reasoning than numerical explanations alone.
 
 This work aims to advance the integration of explainable AI into judicial settings by reframing explanation as a legal artifact rather than a purely technical one.
+
+## 4. Methodology
+
+### 4.1 Dataset
+This study uses the COMPAS recidivism risk assessment dataset as a representative example of algorithmic decision-making in judicial contexts. The dataset contains demographic and criminal history features commonly used to predict two-year recidivism outcomes. Although the dataset is known to reflect historical bias, it is employed here strictly to study explainability and transparency rather than to justify automated sentencing.
+
+The target variable is `two_year_recid`, indicating whether an individual reoffended within two years. A subset of features was selected to construct a baseline predictive model: age, priors_count, juv_fel_count, juv_misd_count, and juv_other_count.
+
+---
+
+### 4.2 Predictive Model
+A gradient-boosted decision tree model (XGBoost) was trained to predict recidivism risk. The model was selected due to its strong predictive performance and compatibility with post-hoc explainability techniques. The dataset was split into training and test sets using an 80/20 partition. Model performance was evaluated using accuracy and area under the receiver operating characteristic curve (AUC).
+
+The trained model was saved and reused for explanation generation to ensure reproducibility.
+
+---
+
+### 4.3 Explainability via SHAP
+To interpret the trained model, Shapley Additive Explanations (SHAP) were applied. SHAP is grounded in cooperative game theory and assigns each feature a contribution value reflecting its influence on an individual prediction. Both global explanations (feature importance across the dataset) and local explanations (feature contributions for individual predictions) were generated.
+
+SHAP satisfies desirable properties such as additivity and consistency, making it suitable for evaluating how individual factors affect predicted risk scores.
+
+---
+
+### 4.4 Narrative Translation Layer
+The core contribution of this work is a narrative translation layer that converts numerical SHAP values into structured legal-style explanations. Rather than presenting raw feature attributions, this layer applies a set of rule-based mappings to generate plain-language justifications.
+
+Features are ranked by absolute SHAP magnitude and categorized as dominant, moderate, or minor contributors. Each feature’s direction of influence (increasing or decreasing risk) is reflected in the narrative output. Technical terminology is avoided in favor of language resembling judicial reasoning.
+
+For example, a raw attribution such as “priors_count = +0.42” is translated into: “The risk score increased primarily due to a pattern of prior offenses, which the model treats as a significant contributing factor.”
+
+---
+
+### 4.5 Reproducibility
+All experiments are reproducible using the provided scripts. Model training is performed by `src/train_model.py`, explanation generation by `src/explain.py`, and narrative construction by `src/narrative.py`. The dataset is loaded from `data/compas.csv`, and outputs are saved to the `docs/` directory. This design ensures that both predictions and explanations can be regenerated and audited.
