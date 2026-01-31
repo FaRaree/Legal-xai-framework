@@ -66,3 +66,11 @@ legal-xai-framework/
 ### 1. Install dependencies
 ```bash
 pip install -r requirements.txt
+
+## Demo (Streamlit)
+
+Run locally:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
