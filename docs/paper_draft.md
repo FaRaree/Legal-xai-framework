@@ -201,3 +201,22 @@ By introducing a rule-based narrative translation layer, this work reframes expl
 The primary contribution of this work is the formalization of the “narrative gap” between statistical explanation and legal justification, along with a reproducible pipeline for addressing it. This approach offers a path toward more transparent and auditable algorithmic decision-support systems in the criminal justice domain.
 
 Future research should evaluate this framework with practicing legal professionals, extend it to additional datasets and decision contexts, and explore adaptive narrative generation methods. More broadly, this work suggests that meaningful explainability in law requires not only faithful attribution, but also communication aligned with legal norms of reasoning and evidence.
+
+
+## References
+
+1. Lundberg, S. M., & Lee, S.-I. (2017). A Unified Approach to Interpreting Model Predictions. *Advances in Neural Information Processing Systems (NeurIPS)*.
+
+2. Rudin, C. (2019). Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead. *Nature Machine Intelligence*.
+
+3. Dressel, J., & Farid, H. (2018). The Accuracy, Fairness, and Limits of Predicting Recidivism. *Science Advances*.
+
+4. Angwin, J., Larson, J., Mattu, S., & Kirchner, L. (2016). Machine Bias. *ProPublica*.
+
+5. Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). “Why Should I Trust You?” Explaining the Predictions of Any Classifier. *Proceedings of the ACM SIGKDD Conference*.
+
+6. Doshi-Velez, F., & Kim, B. (2017). Towards A Rigorous Science of Interpretable Machine Learning. *arXiv preprint arXiv:1702.08608*.
+
+7. Katz, D. M., Bommarito, M. J., & Blackman, J. (2017). A General Approach for Predicting the Behavior of the Supreme Court of the United States. *PLoS ONE*.
+
+8. Deeks, A. (2020). The Judicial Demand for Explainable Artificial Intelligence. *Columbia Law Review*.
