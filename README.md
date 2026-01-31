@@ -60,3 +60,9 @@ legal-xai-framework/
 ├── docs/                 # Legal framework + writeups (Daubert checklist, paper draft)
 ├── requirements.txt      # Python dependencies
 └── README.md             # Project overview
+
+## How to Run
+
+### 1. Install dependencies
+```bash
+pip install -r requirements.txt
