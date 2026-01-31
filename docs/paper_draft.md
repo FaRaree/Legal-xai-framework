@@ -50,3 +50,29 @@ For example, a raw attribution such as “priors_count = +0.42” is translated 
 
 ### 4.5 Reproducibility
 All experiments are reproducible using the provided scripts. Model training is performed by `src/train_model.py`, explanation generation by `src/explain.py`, and narrative construction by `src/narrative.py`. The dataset is loaded from `data/compas.csv`, and outputs are saved to the `docs/` directory. This design ensures that both predictions and explanations can be regenerated and audited.
+
+## 3. Related Work
+
+### 3.1 Explainable Artificial Intelligence (XAI)
+Explainable Artificial Intelligence has emerged as a response to the opacity of complex machine learning models. Feature attribution methods such as LIME and SHAP attempt to identify which input variables most influence model predictions. Among these approaches, SHAP is distinguished by its grounding in cooperative game theory and its satisfaction of properties such as consistency and additivity.
+
+While SHAP and similar techniques improve transparency for technical audiences, their outputs are typically numerical or visual and require statistical literacy to interpret. As a result, these methods do not directly address the needs of non-technical decision-makers such as judges or attorneys.
+
+---
+
+### 3.2 Algorithmic Decision-Making in Criminal Justice
+Risk assessment tools have been widely adopted in criminal justice systems to assist with bail, parole, and sentencing decisions. Studies of systems such as COMPAS have revealed concerns related to bias, fairness, and transparency. Prior research has demonstrated that even when predictive accuracy is high, the reasoning behind algorithmic outputs often remains inaccessible to affected individuals.
+
+Legal scholars have argued that opaque algorithms undermine procedural fairness by preventing meaningful challenges to automated recommendations. These critiques highlight the tension between efficiency and due process in algorithmic governance.
+
+---
+
+### 3.3 Legal Standards for Technical Evidence
+In U.S. courts, the admissibility of scientific and technical evidence is governed in part by the Daubert standard, which emphasizes reliability, testability, and transparency of methodology. Machine-generated evidence raises novel challenges because it often lacks an interpretable chain of reasoning comparable to human expert testimony.
+
+Recent legal scholarship has called for explainable AI systems that can provide intelligible justifications rather than abstract statistical metrics. However, most existing XAI research does not explicitly map its outputs to legal standards of admissibility.
+
+---
+
+### 3.4 Position of This Work
+This study builds upon prior work in explainable AI and algorithmic justice by reframing explanation as a legal artifact rather than a technical one. Whereas existing approaches focus on producing mathematically faithful feature attributions, this work emphasizes the translation of those attributions into narrative explanations aligned with judicial reasoning norms. In doing so, it aims to bridge the gap between statistical explanation and legally meaningful justification.
