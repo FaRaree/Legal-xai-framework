@@ -76,3 +76,40 @@ Recent legal scholarship has called for explainable AI systems that can provide 
 
 ### 3.4 Position of This Work
 This study builds upon prior work in explainable AI and algorithmic justice by reframing explanation as a legal artifact rather than a technical one. Whereas existing approaches focus on producing mathematically faithful feature attributions, this work emphasizes the translation of those attributions into narrative explanations aligned with judicial reasoning norms. In doing so, it aims to bridge the gap between statistical explanation and legally meaningful justification.
+
+## 5. Results
+
+### 5.1 Model Performance
+The baseline XGBoost model achieved moderate predictive performance on the COMPAS dataset. Accuracy and AUC metrics were used to evaluate classification quality. While performance is not the primary objective of this study, these results establish that the model behaves comparably to commonly used risk assessment baselines.
+
+These results demonstrate that the model produces meaningful predictions suitable for explainability analysis.
+
+---
+
+### 5.2 Global Feature Importance
+Global SHAP analysis revealed that prior criminal history variables (e.g., priors_count and juvenile offense counts) exerted the strongest influence on predicted recidivism risk. Age exhibited a comparatively smaller but consistent effect.
+
+This global pattern aligns with prior empirical findings in recidivism modeling, suggesting that the explanation method accurately reflects model behavior rather than producing arbitrary attributions.
+
+---
+
+### 5.3 Local Explanations
+For individual predictions, SHAP produced feature-level attributions indicating how each factor contributed to the final risk score. These local explanations allow inspection of case-specific reasoning rather than relying solely on aggregate trends.
+
+For example, in a representative case, the largest positive contribution was associated with prior offenses, while age contributed marginally in a mitigating direction.
+
+---
+
+### 5.4 Narrative Justifications
+Applying the narrative translation layer to SHAP outputs yielded structured explanations in plain language. Instead of numerical values, the system produced statements such as:
+
+> “The risk score increased primarily due to a documented pattern of prior offenses, which the model treats as a significant contributing factor. Juvenile history also moderately increased the assessed risk, while age had a limited mitigating effect.”
+
+These narrative explanations preserved the relative importance and direction of SHAP attributions while replacing technical terminology with legally intelligible language.
+
+---
+
+### 5.5 Comparison with Raw SHAP Output
+Raw SHAP outputs consist of numerical contributions and visual plots that require statistical interpretation. By contrast, narrative explanations provide directly interpretable reasons that can be scrutinized, contested, and contextualized by non-technical users.
+
+This comparison highlights the central finding of this study: mathematical explanation alone is insufficient for legal contexts, whereas narrative translation supports intelligibility without discarding model transparency.
