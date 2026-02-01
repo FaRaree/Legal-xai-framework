@@ -16,6 +16,32 @@ The contributions of this work are threefold: (1) a reproducible pipeline combin
 
 This work aims to advance the integration of explainable AI into judicial settings by reframing explanation as a legal artifact rather than a purely technical one.
 
+## 3. Related Work
+
+### 3.1 Explainable Artificial Intelligence (XAI)
+Explainable Artificial Intelligence has emerged as a response to the opacity of complex machine learning models. Feature attribution methods such as LIME and SHAP attempt to identify which input variables most influence model predictions. Among these approaches, SHAP is distinguished by its grounding in cooperative game theory and its satisfaction of properties such as consistency and additivity.
+
+While SHAP and similar techniques improve transparency for technical audiences, their outputs are typically numerical or visual and require statistical literacy to interpret. As a result, these methods do not directly address the needs of non-technical decision-makers such as judges or attorneys.
+
+---
+
+### 3.2 Algorithmic Decision-Making in Criminal Justice
+Risk assessment tools have been widely adopted in criminal justice systems to assist with bail, parole, and sentencing decisions. Studies of systems such as COMPAS have revealed concerns related to bias, fairness, and transparency. Prior research has demonstrated that even when predictive accuracy is high, the reasoning behind algorithmic outputs often remains inaccessible to affected individuals.
+
+Legal scholars have argued that opaque algorithms undermine procedural fairness by preventing meaningful challenges to automated recommendations. These critiques highlight the tension between efficiency and due process in algorithmic governance.
+
+---
+
+### 3.3 Legal Standards for Technical Evidence
+In U.S. courts, the admissibility of scientific and technical evidence is governed in part by the Daubert standard, which emphasizes reliability, testability, and transparency of methodology. Machine-generated evidence raises novel challenges because it often lacks an interpretable chain of reasoning comparable to human expert testimony.
+
+Recent legal scholarship has called for explainable AI systems that can provide intelligible justifications rather than abstract statistical metrics. However, most existing XAI research does not explicitly map its outputs to legal standards of admissibility.
+
+---
+
+### 3.4 Position of This Work
+This study builds upon prior work in explainable AI and algorithmic justice by reframing explanation as a legal artifact rather than a technical one. Whereas existing approaches focus on producing mathematically faithful feature attributions, this work emphasizes the translation of those attributions into narrative explanations aligned with judicial reasoning norms. In doing so, it aims to bridge the gap between statistical explanation and legally meaningful justification.
+
 ## 4. Methodology
 
 
@@ -52,31 +78,25 @@ For example, a raw attribution such as “priors_count = +0.42” is translated 
 ### 4.5 Reproducibility
 All experiments are reproducible using the provided scripts. Model training is performed by `src/train_model.py`, explanation generation by `src/explain.py`, and narrative construction by `src/narrative.py`. The dataset is loaded from `data/compas.csv`, and outputs are saved to the `docs/` directory. This design ensures that both predictions and explanations can be regenerated and audited.
 
-## 3. Related Work
+## Results and Demo Output
 
-### 3.1 Explainable Artificial Intelligence (XAI)
-Explainable Artificial Intelligence has emerged as a response to the opacity of complex machine learning models. Feature attribution methods such as LIME and SHAP attempt to identify which input variables most influence model predictions. Among these approaches, SHAP is distinguished by its grounding in cooperative game theory and its satisfaction of properties such as consistency and additivity.
+We evaluate the proposed Legal-XAI framework using an interactive recidivism
+prediction demo inspired by COMPAS-style risk assessment.
 
-While SHAP and similar techniques improve transparency for technical audiences, their outputs are typically numerical or visual and require statistical literacy to interpret. As a result, these methods do not directly address the needs of non-technical decision-makers such as judges or attorneys.
+For an example case, the model predicts a two-year recidivism probability of
+0.442, corresponding to a binary classification of no recidivism at a 0.50
+decision threshold.
 
----
+The system produces two complementary forms of explanation. First, a
+decision-facing narrative justification translates SHAP feature attributions
+into legally intelligible language aligned with Daubert considerations,
+avoiding the disclosure of raw model weights. Second, an audit-facing view
+exposes the full SHAP attribution table, enabling expert review,
+transparency, and adversarial testing.
 
-### 3.2 Algorithmic Decision-Making in Criminal Justice
-Risk assessment tools have been widely adopted in criminal justice systems to assist with bail, parole, and sentencing decisions. Studies of systems such as COMPAS have revealed concerns related to bias, fairness, and transparency. Prior research has demonstrated that even when predictive accuracy is high, the reasoning behind algorithmic outputs often remains inaccessible to affected individuals.
-
-Legal scholars have argued that opaque algorithms undermine procedural fairness by preventing meaningful challenges to automated recommendations. These critiques highlight the tension between efficiency and due process in algorithmic governance.
-
----
-
-### 3.3 Legal Standards for Technical Evidence
-In U.S. courts, the admissibility of scientific and technical evidence is governed in part by the Daubert standard, which emphasizes reliability, testability, and transparency of methodology. Machine-generated evidence raises novel challenges because it often lacks an interpretable chain of reasoning comparable to human expert testimony.
-
-Recent legal scholarship has called for explainable AI systems that can provide intelligible justifications rather than abstract statistical metrics. However, most existing XAI research does not explicitly map its outputs to legal standards of admissibility.
-
----
-
-### 3.4 Position of This Work
-This study builds upon prior work in explainable AI and algorithmic justice by reframing explanation as a legal artifact rather than a technical one. Whereas existing approaches focus on producing mathematically faithful feature attributions, this work emphasizes the translation of those attributions into narrative explanations aligned with judicial reasoning norms. In doing so, it aims to bridge the gap between statistical explanation and legally meaningful justification.
+This separation operationalizes the framework’s core contribution: bridging
+the narrative gap between opaque machine learning models and the explanatory
+standards required in legal decision-making.
 
 ## 5. Results
 
@@ -114,6 +134,34 @@ These narrative explanations preserved the relative importance and direction of 
 Raw SHAP outputs consist of numerical contributions and visual plots that require statistical interpretation. By contrast, narrative explanations provide directly interpretable reasons that can be scrutinized, contested, and contextualized by non-technical users.
 
 This comparison highlights the central finding of this study: mathematical explanation alone is insufficient for legal contexts, whereas narrative translation supports intelligibility without discarding model transparency.
+
+## 5.6 Results
+
+The implemented prototype demonstrates a clear separation between predictive output,
+decision-facing explanation, and audit-facing transparency. Using an example recidivism
+assessment, the system produces three distinct but coordinated outputs.
+
+First, the model generates a probabilistic prediction of two-year recidivism
+(0.442 in the example case), which is converted into a binary classification
+using a fixed decision threshold. This output represents the model’s operative
+decision signal and remains intentionally minimal.
+
+Second, SHAP-based feature attributions are transformed into a narrative
+justification layer. Rather than exposing raw coefficients or weights, the
+system produces legally intelligible statements describing the relative
+influence of input factors (e.g., prior convictions or juvenile history)
+in qualitative terms such as “limited effect” or “minor factor.”
+This narrative output is designed for decision-makers and legal audiences,
+not technical experts.
+
+Third, the system provides a raw SHAP audit view, presented as a transparent
+tabular breakdown of feature contributions. This output is explicitly
+separated from the narrative explanation and is intended for expert review,
+auditing, and adversarial testing.
+
+Together, these results illustrate the framework’s core contribution:
+the decoupling of courtroom-facing explanation from technical transparency
+while preserving traceability between them.
 
 ## 6. Evaluation
 
@@ -159,6 +207,36 @@ This evaluation is exploratory and limited by dataset scope and participant pool
 
 ### 6.6 Ethical Safeguards
 Participants are informed that explanations are generated by an experimental system and are not used for real legal decisions. Sensitive attributes are excluded from narrative outputs unless explicitly required for bias auditing.
+
+## 6. Legal Alignment: Daubert-Informed Analysis
+
+The proposed framework is explicitly designed to address tensions between
+machine learning explainability and legal admissibility standards, particularly
+those articulated in Daubert v. Merrell Dow Pharmaceuticals.
+
+Under Daubert, expert evidence must be testable, transparent, and subject to
+meaningful scrutiny. Pure black-box models often fail this standard due to
+their opacity, while fully exposing model internals risks overwhelming
+decision-makers with technical detail.
+
+The Legal-XAI framework addresses this tension through functional separation.
+The narrative justification layer provides a stable, comprehensible explanation
+of model behavior suitable for legal reasoning, without exposing raw statistical
+artifacts. In parallel, the audit layer preserves full access to SHAP
+attributions, enabling independent validation, error analysis, and adversarial
+challenge.
+
+Importantly, the narrative explanation does not replace the audit trail.
+Instead, it is traceably grounded in the same underlying attribution data.
+This separation mirrors established legal practices in which expert testimony
+summarizes technical analysis while preserving underlying materials for review.
+
+As demonstrated in the prototype, this structure allows machine learning systems
+to remain empirically grounded while satisfying legal demands for transparency,
+contestability, and procedural fairness.
+
+Figure references to the live demo output are provided in the project README,
+illustrating both the narrative explanation and the audit-facing SHAP view.
 
 ## 7. Discussion
 
