@@ -77,6 +77,25 @@ For example, a raw attribution such as “priors_count = +0.42” is translated 
 ### 4.5 Reproducibility
 All experiments are reproducible using the provided scripts. Model training is performed by `src/train_model.py`, explanation generation by `src/explain.py`, and narrative construction by `src/narrative.py`. The dataset is loaded from `data/compas.csv`, and outputs are saved to the `docs/` directory. This design ensures that both predictions and explanations can be regenerated and audited.
 
+## Results and Demo Output
+
+We evaluate the proposed Legal-XAI framework using an interactive recidivism
+prediction demo inspired by COMPAS-style risk assessment.
+
+For an example case, the model predicts a two-year recidivism probability of
+0.442, corresponding to a binary classification of no recidivism at a 0.50
+decision threshold.
+
+The system produces two complementary forms of explanation. First, a
+decision-facing narrative justification translates SHAP feature attributions
+into legally intelligible language aligned with Daubert considerations,
+avoiding the disclosure of raw model weights. Second, an audit-facing view
+exposes the full SHAP attribution table, enabling expert review,
+transparency, and adversarial testing.
+
+This separation operationalizes the framework’s core contribution: bridging
+the narrative gap between opaque machine learning models and the explanatory
+standards required in legal decision-making.
 
 ## 5. Results
 
