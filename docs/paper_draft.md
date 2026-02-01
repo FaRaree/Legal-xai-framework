@@ -18,6 +18,7 @@ This work aims to advance the integration of explainable AI into judicial settin
 
 ## 4. Methodology
 
+
 ### 4.1 Dataset
 This study uses the COMPAS recidivism risk assessment dataset as a representative example of algorithmic decision-making in judicial contexts. The dataset contains demographic and criminal history features commonly used to predict two-year recidivism outcomes. Although the dataset is known to reflect historical bias, it is employed here strictly to study explainability and transparency rather than to justify automated sentencing.
 
