@@ -27,6 +27,31 @@ This approach operationalizes the **“narrative gap”** between statistical ex
 
 ---
 
+## Demo Output
+
+The interactive demo produces three distinct layers of output for a single case:
+
+1. **Prediction Output**  
+   A probabilistic estimate of two-year recidivism with a binary decision threshold.
+
+2. **Narrative Justification (Prototype)**  
+   A court-facing explanation derived from SHAP attributions, translated into
+   legally intelligible language without exposing raw model weights.
+
+3. **Raw SHAP Output (Audit View)**  
+   A transparent, tabular representation of feature attributions intended for
+   expert review, auditing, and adversarial testing.
+
+These outputs illustrate the separation between decision-facing explanations
+and audit-facing transparency that motivates the framework’s core contribution.
+
+### Prediction and Narrative View
+![Prediction and Narrative Output](docs/decision_narrative_view.png)
+
+### Raw SHAP Audit View
+![Raw SHAP Output](docs/audit_shap_view.png)
+
+
 ## Key Contribution: The “Narrative Gap”
 Most XAI systems output feature weights (e.g., `Prior convictions: +0.42`). Courts, however, require **reasons** that are intelligible, contestable, and aligned with legal norms.
 
