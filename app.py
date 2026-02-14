@@ -4,6 +4,46 @@ import pandas as pd
 import shap
 import streamlit as st
 
+def confidence_and_limits(probability: float, threshold: float, input_row=None):
+    """
+    Returns (confidence_label, distance_from_threshold, completeness_ratio, review_recommendation)
+    - probability: model predicted probability (0..1)
+    - threshold: decision threshold (0..1)
+    - input_row: optional pandas Series/dict of inputs for completeness check
+    """
+    # Confidence based on how far probability is from the threshold
+    dist = abs(probability - threshold)
+
+    if dist >= 0.25:
+        confidence = "High"
+        review = "Optional (routine human review recommended)"
+    elif dist >= 0.10:
+        confidence = "Moderate"
+        review = "Recommended (human review advised)"
+    else:
+        confidence = "Low"
+        review = "Required (prediction is near threshold)"
+
+    # Data completeness (if we have the inputs)
+    completeness_ratio = None
+    if input_row is not None:
+        try:
+            # works for pandas Series
+            total = len(input_row)
+            missing = int(input_row.isna().sum())
+            completeness_ratio = (total - missing) / max(total, 1)
+        except Exception:
+            # works for dict-like
+            try:
+                vals = list(input_row.values())
+                total = len(vals)
+                missing = sum(v is None for v in vals)
+                completeness_ratio = (total - missing) / max(total, 1)
+            except Exception:
+                completeness_ratio = None
+
+    return confidence, dist, completeness_ratio, review
+
 st.set_page_config(page_title="Legal XAI Demo", layout="wide")
 
 st.title("Legal-XAI-Framework Demo")
