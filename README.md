@@ -9,6 +9,61 @@ This project investigates how Explainable Artificial Intelligence (XAI) can be a
 
 Rather than treating explanations as purely mathematical outputs, this framework focuses on **legal comprehensibility**: whether an explanation can be understood, challenged, and evaluated by judges, attorneys, and defendants in a courtroom context.
 
+## ⚠️ Usage & Licensing Notice
+
+This repository is provided for **academic research, educational use, and non-commercial evaluation only**.
+
+### 🚫 Commercial Use Restricted
+Any commercial use, including but not limited to:
+- Paid products or services
+- SaaS, APIs, or hosted deployments
+- Consulting, compliance tooling, or enterprise integrations
+- Derivative works used in revenue-generating contexts
+
+is **strictly prohibited without an explicit commercial license** from the author.
+
+### 💼 Commercial Licensing
+Commercial licenses, enterprise usage, and hosted/API access may be made available separately.
+
+📩 For licensing inquiries, contact: **[Reechensky.joseph@gmail.com]**
+
+© 2026 FaRaree. All rights reserved.
+
+## 💼 Commercial Licensing & Pricing (Indicative)
+
+Commercial use of this framework requires a paid license.  
+Indicative tiers are outlined below.
+
+### 🎓 Research / Pilot License
+**$0 – $2,500 / year**
+- Non-profit research
+- Grant-funded pilots
+- Academic–industry evaluations
+- No production deployment
+
+---
+
+### 🏢 Enterprise License
+**$25,000 – $150,000 / year**
+- Internal enterprise use
+- Compliance & legal tooling
+- On-prem or private cloud deployment
+- Audit & governance support
+
+---
+
+### 🌐 API / Hosted Demo License (Future)
+**$0.10 – $1.00 per request** *(or custom SLA)*
+- Hosted inference & explanation API
+- Court-facing narrative outputs
+- Monitoring & versioned explanations
+
+---
+
+> Pricing is indicative and subject to customization based on scale, risk profile, and regulatory environment.
+
+📧 **Contact:** reechensky.joseph@gmail.com
+
 ---
 
 ## Research Question
